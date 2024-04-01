@@ -1,6 +1,5 @@
- // src/app/page.js
- "use client";
-
+"use client";
+ import {  parseOutput  } from "../success_parser";
  import { useState } from "react";
  import EnvironmentSelector from "./EnvironmentSelector";
  import CategorySelector from "./CategorySelector";
@@ -11,7 +10,7 @@
    const labels = options
      .filter((option) => option.category === category)
      .map((option) => option.label);
-   return [...new Set(labels)]; // Removendo duplicados usando Set
+   return [...new Set(labels)]; 
  };
  
  export default function Home() {
@@ -30,11 +29,11 @@
    };
  
    const handleTestSelect = (test) => {
-     console.log(test)
      setSelectedTest(test);
    };
  
    const handleRunTest = async () => {
+     setOutput("O Teste esta em Andamento ");
      if (selectedEnvironment && selectedCategory && selectedTest) {
        const selectedCommand = commandOptions.find(
          (option) =>
@@ -54,8 +53,9 @@
              throw new Error("Erro ao executar o teste");
            }
            const { output } = await response.json();
-           setOutput(output);
-         } catch (error) {
+           setOutput(parseOutput(output));
+         } 
+         catch (error) {
            console.error("Erro ao executar o comando:", error);
            setOutput(`Erro ao executar o comando: ${error.message}`);
          }
