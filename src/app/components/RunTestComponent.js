@@ -1,10 +1,12 @@
 "use client";
  import {  parseOutput  } from "../success_parser";
+ import { styleOutput } from "../resultObject";
  import { useState } from "react";
  import EnvironmentSelector from "./EnvironmentSelector";
  import CategorySelector from "./CategorySelector";
  import TestSelector from "./TestSelector";
  import { commandOptions, environmentOptions, categories } from "../constants";
+ import Output  from "./Output";
  
  const getUniqueLabels = (options, category) => {
    const labels = options
@@ -53,7 +55,10 @@
              throw new Error("Erro ao executar o teste");
            }
            const { output } = await response.json();
-           setOutput(parseOutput(output));
+           const parsedOutput = parseOutput(output)
+           const styledOutput = styleOutput(parsedOutput)
+           console.log(styledOutput)
+          setOutput(styleOutput(parsedOutput))
          } 
          catch (error) {
            console.error("Erro ao executar o comando:", error);
@@ -89,8 +94,16 @@
          onSelect={handleTestSelect}
        />
      )}
-     <button   className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleRunTest}>Run Test</button>
-     {output && <pre>{output}</pre>}
+     <button   
+       className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
+       onClick={handleRunTest}>Run Test</button>
+       {output && (
+      <div
+        className="output-container"
+        dangerouslySetInnerHTML={{ __html: output }}
+      />
+    )}
+     
    </div>
    );
  }
