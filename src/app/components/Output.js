@@ -5,9 +5,9 @@ const Output = ({ output, testStatus }) => {
   return ( <>
           {testStatus === "success" ?
             <div>
-                <div>message: {output.message}</div>
-                <div>result: {output.result}</div>
-                <div>number: {output.number}</div>
+                <div>{output.message}</div>
+                <div>{output.result}</div>
+                <div>{output.number}</div>
             </div>
             :
             <div className="output-container">
