@@ -2,3 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+.output-container {
+    margin-top: 1rem;
+    font-family: monospace;
+  }
+  
+  .email-line {
+    color: green;
+  }
+  
+  .cnpj-line {
+    color: blue;
+  }
+  
+  .remessa-numero-line {
+    color: purple;
+  }
+  
+  .remessa-file-line {
+    color: orange;
+  }
+
+  .header-image {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 71px;
+    height: AUTO;
+    mask-image: linear-gradient(to right, rgb(0 0 0 / 64%), rgba(0, 0, 0, 0));
+  }
+
+  .run-test-grid {
+    display: grid;
+    grid-template-areas: 
+    "categorySelectorLabel categorySelectorSelect"
+    "envSelectorLabel envSelectorSelect"
+    "testSelectorLabel testSelectorSelect";
+    row-gap: 15px;
+  }
+
+  .custom-input {
+    grid-area: categorySelectorSelect;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #909090;
+    padding: 10px;
+  }

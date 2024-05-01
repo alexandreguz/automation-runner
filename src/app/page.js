@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex min-h-screen flex-col items-center p-24 ">
+      <div className="flex min-h-screen flex-col items-center">
       <Navbar onRunTest={handleRunTest} />
       {showRunTest && (
         <RunTestComponent
