@@ -76,13 +76,11 @@ export default function Home() {
           setOutput(parseOutput(responseData.output));
           setTestStatus("success");
         } catch (error) {
-          console.log("ENTROU CATCH");
           console.error("Erro ao executar o comando:", error);
           setTestStatus("error");
           setOutput(`Erro ao executar o comando: ${error.message}`);
         }
       } else {
-        console.log("ENTROU EM ELSE1");
         console.error(
           "Comando não encontrado para a categoria e teste selecionados."
         );
@@ -119,6 +117,7 @@ export default function Home() {
         >
           Run Test
         </button>
+        {console.log(output)}
         {<Output output={output} testStatus={testStatus} />}
       </div>
     </div>
