@@ -11,7 +11,6 @@ export async function GET(request) {
       const [key, value] = line.split(': ');
       data[key] = value;
     });
-
     return new Response(JSON.stringify(data), {
       status: 200,
       headers: {
@@ -19,8 +18,8 @@ export async function GET(request) {
       },
     });
   } catch (err) {
-    console.error('Erro ao ler o arquivo:', err);
-    return new Response('Erro ao ler o arquivo', {
+    console.error('Error reading the file:', err);
+    return new Response('Error reading the file', {
       status: 500,
       headers: {
         'Content-Type': 'text/plain',

@@ -46,7 +46,7 @@ export default function Home() {
 
   const handleRunTest = async () => {
     if (selectedEnvironment && selectedCategory && selectedTest) {
-      setOutput("O Teste esta em Andamento ");
+      setOutput(<div className="text-sky-400 justify-start">The Test is Running</div> );
       setTestStatus("pending");
 
       const selectedCommand = commandOptions.find(
@@ -70,15 +70,15 @@ export default function Home() {
           if (!response.ok) {
             console.log("ERROR");
             setTestStatus("error");
-            throw new Error("Erro ao executar o teste");
+            throw new Error("Failed During Testing");
           }
           const responseData = await response.json();
           setOutput(parseOutput(responseData.output));
           setTestStatus("success");
         } catch (error) {
-          console.error("Erro ao executar o comando:", error);
+          console.error("Error:", error);
           setTestStatus("error");
-          setOutput(`Erro ao executar o comando: ${error.message}`);
+          setOutput(`Error: ${error.message}`);
         }
       } else {
         console.error(

@@ -16,7 +16,7 @@ const FileViewer = () => {
         setTestStatus("success");
 
       } catch (error) {
-        console.error('Erro ao obter dados do arquivo:', error);
+        console.error('Error Getting Data From File:', error);
       }
     };
 

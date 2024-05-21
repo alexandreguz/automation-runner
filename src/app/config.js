@@ -1,0 +1,1 @@
+export const rootPath = `/Users/alexandreguz/Documents/BS2/qa/automation`

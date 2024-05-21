@@ -1,9 +1,10 @@
 import { exec } from 'child_process';
+import { rootPath } from '@/app/config';
 
 export async function POST(req) {
   try {
     const {command } = await req.json();
-    const directory = `/Users/alexandreguz/Documents/BS2/qa/automation`;
+    const directory = rootPath ;
 
     return new Promise((resolve, reject) => {
       exec(command, { cwd: directory }, (error, stdout, stderr) => {
