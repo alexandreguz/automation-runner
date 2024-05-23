@@ -118,7 +118,8 @@ export default function Home() {
           Run Test
         </button>
         {console.log(output)}
-        {<Output output={output} testStatus={testStatus} />}
+        {testStatus != "" &&
+          <Output output={output} testStatus={testStatus} />} 
       </div>
     </div>
   );
